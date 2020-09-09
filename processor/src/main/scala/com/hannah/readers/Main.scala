@@ -8,13 +8,9 @@ import com.amazonaws.services.sqs.model.Message
 import com.amazonaws.services.sqs.{AmazonSQSAsync, AmazonSQSAsyncClientBuilder}
 import com.nike.fleam.StreamDaemon
 import com.nike.fleam.sqs.configuration.SqsQueueProcessingConfiguration
-import com.nike.fleam.sqs.implicits._
 import com.nike.fleam.sqs.{SqsDelete, SqsSource}
 import com.typesafe.config.ConfigFactory
-import net.ceedubs.ficus.Ficus._
-import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 
-import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.Failure
 
 object Main extends App {
