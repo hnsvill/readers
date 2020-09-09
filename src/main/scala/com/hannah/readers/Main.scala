@@ -8,6 +8,7 @@ import com.amazonaws.services.sqs.model.Message
 import com.amazonaws.services.sqs.{AmazonSQSAsync, AmazonSQSAsyncClientBuilder}
 import com.nike.fleam.StreamDaemon
 import com.nike.fleam.sqs.configuration.SqsQueueProcessingConfiguration
+import com.nike.fleam.sqs.implicits._
 import com.nike.fleam.sqs.{SqsDelete, SqsSource}
 import com.typesafe.config.ConfigFactory
 import net.ceedubs.ficus.Ficus._
@@ -23,9 +24,6 @@ object Main extends App {
 
   val config = ConfigFactory.load()
   val sqsConfig = config.as[SqsQueueProcessingConfiguration]("ourSqsSource")
-
-  val name = config.getString("main.hello.name")
-  println(s"hello, sbt. Say hi to $name for me")
 
   val sqsClient : AmazonSQSAsync = AmazonSQSAsyncClientBuilder.standard()
     .withRegion(Regions.fromName(sqsConfig.region)).build()
